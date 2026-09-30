@@ -77,6 +77,7 @@ export function Chat({
                 return;
             }
 
+            setMessages([]);
             setActivePhone(normalizedPhone);
             setActiveChatId(result.chatId);
             setPhone('');

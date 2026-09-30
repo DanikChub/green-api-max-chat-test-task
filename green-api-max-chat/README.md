@@ -1,75 +1,92 @@
-# React + TypeScript + Vite
+# GREEN-API MAX Chat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Тестовое задание — пользовательский интерфейс для отправки и получения текстовых сообщений MAX с использованием GREEN-API.
 
-Currently, two official plugins are available:
+## Возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Подключение к GREEN-API по данным инстанса
+- Проверка состояния инстанса
+- Создание чата по номеру телефона
+- Проверка наличия пользователя в MAX
+- Отправка текстовых сообщений
+- Получение входящих сообщений
+- Отображение входящих и исходящих сообщений
 
-## React Compiler
+## Стек
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- GREEN-API
 
-## Expanding the ESLint configuration
+## Используемые методы GREEN-API
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- `getStateInstance` — проверка состояния инстанса
+- `checkAccount` — проверка номера и получение `chatId`
+- `sendMessage` — отправка сообщения
+- `receiveNotification` — получение входящих уведомлений
+- `deleteNotification` — удаление обработанного уведомления из очереди
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Запуск проекта
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Клонировать репозиторий:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/DanikChub/green-api-max-chat-test-task.git
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Перейти в директорию приложения:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+cd green-api-max-chat-test-task/green-api-max-chat
 ```
+
+Установить зависимости:
+
+```bash
+npm install
+```
+
+Запустить приложение:
+
+```bash
+npm run dev
+```
+
+После запуска приложение будет доступно по адресу, указанному Vite в терминале.
+
+## Использование
+
+Для работы приложения необходим авторизованный MAX-инстанс GREEN-API.
+
+На экране подключения необходимо указать:
+
+- `apiUrl`
+- `idInstance`
+- `apiTokenInstance`
+
+Данные доступны в настройках инстанса GREEN-API.
+
+После подключения:
+
+1. Введите номер телефона пользователя MAX в международном формате.
+2. Нажмите «Создать чат».
+3. Введите текст сообщения.
+4. Нажмите «Отправить».
+5. Входящие текстовые сообщения будут автоматически отображаться в чате.
+
+## Проверка проекта
+
+Проверка ESLint:
+
+```bash
+npm run lint
+```
+
+Production-сборка:
+
+```bash
+npm run build
+```
+
+"Написал chatGpt README-файл - я проверил, честно признаюсь расписывать для тестового задания не видел смысла самому"
